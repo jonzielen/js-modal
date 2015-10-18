@@ -10,37 +10,23 @@
     display: block;
     z-index: 3;
     background-color: rgba(0, 0, 0, 0.7);
-    transition: opacity 1s ease;
-    opacity: 1;
+    opacity: 0;
 }
 .modal-wrapper {
     z-index: 5;
     width: 200px;
     height: 200px;
     margin: auto;
-    background-color: #fff;
+    background-color: #ff0000;
     position: relative;
-    transition: opacity 1s ease;
+    opacity: 0;
+}
+.close-modal-bg, .modal-wrapper {
+    transition: all 0.5s ease;
+}
+.close-modal-bg.fadeIn, .modal-wrapper.fadeIn {
     opacity: 1;
 }
 .modal-close .modal-wrapper, .modal-close .close-modal-bg {
-    /*animation: fadeOut 0.3s ease;*/
-    /*transition: opacity 1s ease;*/
     opacity: 0;
-}
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
 }

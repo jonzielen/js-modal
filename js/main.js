@@ -1,11 +1,15 @@
 document.getElementById('launch-modal').addEventListener('click', function() {
     launchModal();
     addCloseModal();
-})
+
+    // Make sure the initial state is applied.
+    window.getComputedStyle(document.getElementById('modal-bg')).opacity;
+
+    addClassName('close-modal-bg', ' fadeIn');
+    addClassName('modal-wrapper', ' fadeIn');
+});
 
 function launchModal() {
-    document.body.className += 'modal-open';
-
     var modalBg = createElem('DIV', 'id', 'modal-bg');
     modalBg.className = 'close-modal';
     modalBg.className += ' close-modal-bg';
@@ -32,15 +36,40 @@ function addCloseModal() {
 
     for (var i = 0; i < closeModal.length; i++) {
         closeModal[i].addEventListener('click', function() {
-            document.body.className += ' modal-close';
-            addFadeOut('close-modal-bg');
-            addFadeOut('modal-wrapper');
+            document.body.className += 'modal-close';
 
-            removeClass('.modal-open');
+            var time = getTransitionTime('modal-bg');
+            time = transitionTimeToSetTime(time);
 
-            //removeElement('close-modal-bg');
-            //removeElement('modal-wrapper');
+            setTimeout(function(){
+                removeElement('modal-wrapper');
+                removeElement('close-modal-bg');
+                removeClass('.modal-close');
+            }, time);
         });
+    }
+}
+
+function transitionTimeToSetTime(time) {
+    time = Number(time.substring(0, time.length - 1));
+    time = time * 1000;
+
+    return time;
+}
+
+function getTransitionTime(id) {
+    var element = document.getElementById(id),
+    style = window.getComputedStyle(element),
+    transition = style.getPropertyValue('transition-duration');
+
+    return transition;
+}
+
+function addClassName(elem, className) {
+    var elems = document.getElementsByClassName(elem);
+
+    for (var i = 0; i < elems.length; i++) {
+        elems[i].className += className;
     }
 }
 
@@ -49,14 +78,6 @@ function removeClass(className) {
 
     for (var i = 0; i < classToRemove.length; i++) {
         classToRemove[i].className = classToRemove[i].className.replace(className.substring(1), '');
-    }
-}
-
-function addFadeOut(child) {
-    var elemToFadeOut = document.getElementsByClassName(child);
-
-    for (var i = 0; i < elemToFadeOut.length; i++) {
-        elemToFadeOut[i].className += ' fadeOut';
     }
 }
 
