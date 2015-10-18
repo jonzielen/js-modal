@@ -48,21 +48,23 @@ function addCloseModal() {
     var closeModal = document.querySelectorAll('.close-modal');
 
     for (var i = 0; i < closeModal.length; i++) {
-        closeModal[i].addEventListener('click', function() {
-            removeClass('.modal-open');
-            document.body.className += 'modal-close';
-
-            var time = getTransitionTime('modal-bg');
-            time = transitionTimeToSetTime(time);
-
-            setTimeout(function(){
-                removeElement('modal-wrapper');
-                removeElement('close-modal-bg');
-                removeClass('.modal-close');
-
-            }, time);
-        });
+        closeModal[i].addEventListener('click', closeOut);
     }
+}
+
+var closeOut = function() {
+    removeClass('.modal-open');
+    document.body.className += 'modal-close';
+
+    var time = getTransitionTime('modal-bg');
+    time = transitionTimeToSetTime(time);
+
+    setTimeout(function(){
+        removeElement('modal-wrapper');
+        removeElement('close-modal-bg');
+        removeClass('.modal-close');
+
+    }, time);
 }
 
 function transitionTimeToSetTime(time) {
