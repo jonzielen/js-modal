@@ -4,7 +4,7 @@ document.getElementById('launch-modal').addEventListener('click', function() {
 })
 
 function launchModal() {
-    document.body.className += ' modal-open';
+    document.body.className += 'modal-open';
 
     var modalBg = createElem('DIV', 'id', 'modal-bg');
     modalBg.className = 'close-modal';
