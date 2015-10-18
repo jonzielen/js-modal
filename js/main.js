@@ -5,18 +5,25 @@ document.getElementById('launch-modal').addEventListener('click', function() {
     // Make sure the initial state is applied.
     window.getComputedStyle(document.getElementById('modal-bg')).opacity;
 
-    addClassName('close-modal-bg', ' fadeIn');
-    addClassName('modal-wrapper', ' fadeIn');
+    addClassName('close-modal-bg', ' in');
+    addClassName('modal-wrapper', ' in');
 });
 
 function launchModal() {
+    getModalContent('main-modal');
+
     var modalBg = createElem('DIV', 'id', 'modal-bg');
     modalBg.className = 'close-modal';
     modalBg.className += ' close-modal-bg';
     addToDom('body', modalBg);
 
     var modalWrapper = createElem('DIV', 'class', 'modal-wrapper');
+    modalWrapper.setAttribute('id', 'main-modal')
     addToDom('body', modalWrapper);
+
+    var modalClose = createElem('DIV', 'class', 'modal-x close-modal');
+    modalClose.innerHTML = 'X';
+    addToDom('.modal-wrapper', modalClose);
 
     document.body.className += 'modal-open';
 }
@@ -29,7 +36,11 @@ function createElem(elem, attr, attrValue) {
 }
 
 function addToDom(parent, child) {
-    document.querySelector(parent).appendChild(child);
+    var parents = document.querySelectorAll(parent);
+
+    for (var i = 0; i < parents.length; i++) {
+        parents[i].appendChild(child);
+    }
 }
 
 // close modal
@@ -90,5 +101,16 @@ function removeElement(child) {
 
     for (var i = 0; i < elemToRemove.length; i++) {
         document.body.removeChild(elemToRemove[i]);
+    }
+}
+
+function getModalContent(id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "modal/modal.html", true);
+    xhttp.send(null);
+    xhttp.onload = function(e) {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            document.getElementById(id).innerHTML += xhttp.responseText;
+        }
     }
 }

@@ -1,6 +1,7 @@
 #launch-modal {
     font-size: 24px;
     border-radius: 4px;
+    cursor: pointer;
 }
 .close-modal-bg {
     position: fixed;
@@ -16,10 +17,12 @@
 }
 .modal-wrapper {
     z-index: 5;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    background-color: #ff0000;
+    padding: 10px;
+    width: 380px;
+    min-height: 180px;
+    margin: 0 auto;
+    background-color: #ccc;
+    border-radius: 8px;
     position: relative;
     opacity: 0;
 }
@@ -29,9 +32,36 @@
 .modal-open {
     overflow: hidden;
 }
-.close-modal-bg.fadeIn, .modal-wrapper.fadeIn {
+.close-modal-bg.in, .modal-wrapper.in {
     opacity: 1;
 }
 .modal-close .modal-wrapper, .modal-close .close-modal-bg {
     opacity: 0;
+}
+#main-modal h2 {
+    padding: 0 0 12px;
+    margin: 0;
+}
+#main-modal p {
+    padding: 0 0 12px;
+    margin: 0;
+}
+#main-modal ul {
+    padding-top: 0;
+    padding-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.modal-x {
+    position: absolute;
+    top: -18px;
+    right: -15px;
+    font-weight: bold;
+    background-color: #ccc;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
 }
