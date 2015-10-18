@@ -112,7 +112,9 @@ function getModalContent(id) {
     xhttp.send(null);
     xhttp.onload = function(e) {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
-            document.getElementById(id).innerHTML += xhttp.responseText;
+            var content = document.createElement('DIV');
+            content.innerHTML = xhttp.responseText;
+            document.getElementById(id).appendChild(content);
         }
     }
 }
