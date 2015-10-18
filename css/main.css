@@ -1,3 +1,7 @@
+#launch-modal {
+    font-size: 24px;
+    border-radius: 4px;
+}
 .close-modal-bg {
     position: fixed;
     width: auto;
@@ -6,8 +10,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    overflow: hidden;
-    display: block;
     z-index: 3;
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 0;
@@ -23,6 +25,9 @@
 }
 .close-modal-bg, .modal-wrapper {
     transition: all 0.5s ease;
+}
+.modal-open {
+    overflow: hidden;
 }
 .close-modal-bg.fadeIn, .modal-wrapper.fadeIn {
     opacity: 1;

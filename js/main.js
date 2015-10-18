@@ -17,6 +17,8 @@ function launchModal() {
 
     var modalWrapper = createElem('DIV', 'class', 'modal-wrapper');
     addToDom('body', modalWrapper);
+
+    document.body.className += 'modal-open';
 }
 
 function createElem(elem, attr, attrValue) {
@@ -36,6 +38,7 @@ function addCloseModal() {
 
     for (var i = 0; i < closeModal.length; i++) {
         closeModal[i].addEventListener('click', function() {
+            removeClass('.modal-open');
             document.body.className += 'modal-close';
 
             var time = getTransitionTime('modal-bg');
@@ -45,6 +48,7 @@ function addCloseModal() {
                 removeElement('modal-wrapper');
                 removeElement('close-modal-bg');
                 removeClass('.modal-close');
+
             }, time);
         });
     }
