@@ -25,6 +25,7 @@
     border-radius: 8px;
     position: relative;
     opacity: 0;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
 }
 .close-modal-bg, .modal-wrapper {
     transition: all 0.5s ease;
@@ -54,8 +55,8 @@
 }
 .modal-x {
     position: absolute;
-    top: -18px;
-    right: -15px;
+    top: -20px;
+    right: -20px;
     font-weight: bold;
     background-color: #ccc;
     width: 20px;
@@ -64,4 +65,5 @@
     line-height: 20px;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0px 0px 8px 8px rgba(0, 0, 0, 0.3);
 }
