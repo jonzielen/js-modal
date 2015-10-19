@@ -59,7 +59,7 @@ var closeOut = function() {
     var time = getTransitionTime('modal-bg');
     time = transitionTimeToSetTime(time);
 
-    setTimeout(function(){
+    setTimeout(function() {
         removeElement('modal-wrapper');
         removeElement('close-modal-bg');
         removeClass('.modal-close');
@@ -76,8 +76,8 @@ function transitionTimeToSetTime(time) {
 
 function getTransitionTime(id) {
     var element = document.getElementById(id),
-    style = window.getComputedStyle(element),
-    transition = style.getPropertyValue('transition-duration');
+        style = window.getComputedStyle(element),
+        transition = style.getPropertyValue('transition-duration');
 
     return transition;
 }
