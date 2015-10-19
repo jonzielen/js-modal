@@ -31,7 +31,7 @@
 .close-modal-bg, .modal-wrapper {
     transition: all 0.5s ease;
 }
-.modal-open {
+.modal-open, .modal-close {
     overflow: hidden;
 }
 .close-modal-bg.in, .modal-wrapper.in {
